@@ -34,14 +34,14 @@ void TicTacToe::startGame(){
             cin >> x;
             cout << "Which row?\n";
             cin >> y;
-            if(board[x-1][y-1] == ' ' and x >= 1 and x <= 3 and y >= 1 and y <= 3){
+            x--;
+            y--;
+            if(board[y][x] == ' ' and x >= 0 and x <= 2 and y >= 0 and y <= 2){
                 break;
             }else{
                 cout << "Please enter a valid cell.\n";
             }
         }
-        x--;
-        y--;
         if(player == 1){
             board[y][x] = 'x';
             player = 2;
@@ -49,5 +49,20 @@ void TicTacToe::startGame(){
             board[y][x] = 'o';
             player = 1;
         }
+        if((board[0][0] == 'x' && board[1][0] == 'x' && board[2][0] == 'x') || (board[0][1] == 'x' && board[1][1] == 'x' && board[2][1] == 'x') || (board[0][2] == 'x' && board[1][2] == 'x' && board[2][2] == 'x') || (board[0][0] == 'x' && board[0][1] == 'x' && board[0][2] == 'x') || (board[1][0] == 'x' && board[1][1] == 'x' && board[1][2] == 'x') || (board[2][0] == 'x' && board[2][1] == 'x' && board[2][2] == 'x') || (board[0][0] == 'x' && board[1][1] == 'x' && board[2][2] == 'x') || (board[0][2] == 'x' && board[1][1] == 'x' && board[2][0] == 'x')){
+            showBoard();
+            cout << "\nPlayer one wins!\n";
+            tie = false;
+            break;
+        }else if((board[0][0] == 'o' && board[1][0] == 'o' && board[2][0] == 'o') || (board[0][1] == 'o' && board[1][1] == 'o' && board[2][1] == 'o') || (board[0][2] == 'o' && board[1][2] == 'o' && board[2][2] == 'o') || (board[0][0] == 'o' && board[0][1] == 'o' && board[0][2] == 'o') || (board[1][0] == 'o' && board[1][1] == 'o' && board[1][2] == 'o') || (board[2][0] == 'o' && board[2][1] == 'o' && board[2][2] == 'o') || (board[0][0] == 'o' && board[1][1] == 'o' && board[2][2] == 'o') || (board[0][2] == 'o' && board[1][1] == 'o' && board[2][0] == 'o')){
+            showBoard();
+            cout << "\nPlayer two wins!\n";
+            tie = false;
+            break;
+        }
+    }
+    if(tie){
+        showBoard();
+        cout << "\nThe game is a draw\n";
     }
 }
