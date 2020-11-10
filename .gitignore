@@ -33,3 +33,5 @@
 
 build/
 tasks.json
+foop.code-workspace
+.vscode/
